@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Police Bharti Mock Test</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+padding:20px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h1{
+text-align:center;
+}
+
+.timer{
+font-size:22px;
+font-weight:bold;
+text-align:right;
+color:red;
+}
+
+.question{
+font-size:22px;
+margin-top:20px;
+margin-bottom:20px;
+}
+
+.option{
+padding:10px;
+border:1px solid #ccc;
+margin:10px 0;
+border-radius:5px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+cursor:pointer;
+margin-top:20px;
+}
+
+.result{
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Police Bharti Mock Test</h1>
+
+<div class="timer">
+Time Left:
+<span id="timer">60</span>s
+</div>
+
+<div id="quiz">
+
+<div id="question" class="question"></div>
+
+<div id="options"></div>
+
+<button onclick="nextQuestion()">
+Next
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+question:"भारताचे संविधान कधी लागू झाले?",
+options:[
+"15 ऑगस्ट 1947",
+"26 जानेवारी 1950",
+"26 नोव्हेंबर 1949",
+"1 मे 1960"
+],
+answer:1
+},
+
+{
+question:"राष्ट्रीय प्राणी कोणता आहे?",
+options:[
+"वाघ",
+"सिंह",
+"चित्ता",
+"हत्ती"
+],
+answer:0
+},
+
+{
+question:"महाराष्ट्राची राजधानी कोणती?",
+options:[
+"पुणे",
+"मुंबई",
+"नाशिक",
+"नागपूर"
+],
+answer:1
+},
+
+{
+question:"भारतात किती राज्ये आहेत?",
+options:[
+"27",
+"28",
+"29",
+"30"
+],
+answer:1
+},
+
+{
+question:"भारतीय संविधानाचे शिल्पकार कोण?",
+options:[
+"महात्मा गांधी",
+"नेहरू",
+"डॉ. बाबासाहेब आंबेडकर",
+"पटेल"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion(){
+
+let q = questions[currentQuestion];
+
+document.getElementById("question")
+.innerHTML =
+(currentQuestion+1)+". "+q.question;
+
+let html = "";
+
+q.options.forEach((option,index)=>{
+
+html += `
+<div class="option">
+<label>
+<input type="radio"
+name="answer"
+value="${index}">
+${option}
+</label>
+</div>
+`;
+
+});
+
+document.getElementById("options")
+.innerHTML = html;
+
+}
+
+function nextQuestion(){
+
+const selected =
+document.querySelector(
+'input[name="answer"]:checked'
+);
+
+if(!selected){
+alert("उत्तर निवडा");
+return;
+}
+
+if(
+parseInt(selected.value)
+===
+questions[currentQuestion].answer
+){
+score++;
+}
+
+currentQuestion++;
+
+if(currentQuestion < questions.length){
+
+loadQuestion();
+
+}else{
+
+showResult();
+
+}
+
+}
+
+function showResult(){
+
+let percent =
+(score/questions.length)*100;
+
+document.getElementById("quiz")
+.innerHTML = `
+
+<div class="result">
+
+<h2>Test Completed</h2>
+
+<h1>
+${score}/${questions.length}
+</h1>
+
+<h2>
+${percent.toFixed(0)}%
+</h2>
+
+<button onclick="location.reload()">
+Restart Test
+</button>
+
+</div>
+
+`;
+
+}
+
+loadQuestion();
+
+let timeLeft = 60;
+
+const timer = setInterval(()=>{
+
+timeLeft--;
+
+document.getElementById("timer")
+.innerText = timeLeft;
+
+if(timeLeft<=0){
+
+clearInterval(timer);
+
+showResult();
+
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
