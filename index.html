@@ -3,113 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>पोलीस भरती संपूर्ण १०० प्रश्न महा-मॉक टेस्ट</title>
+    <title>पोलीस भरती ५० प्रश्न ऑनलाईन सराव परीक्षा</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 10px;
-            direction: ltr;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #003366;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            background: #eec213;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        #quiz-box {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        @media(min-width: 768px) {
-            #quiz-box { flex-direction: row; }
-            .quiz-main { flex: 3; }
-            .quiz-sidebar { flex: 1; min-width: 250px; }
-        }
-        .quiz-main {
-            background: #fafafa;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .question {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .option {
-            background: white;
-            padding: 12px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f6f9; margin: 0; padding: 10px; direction: ltr; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #003366; font-size: 22px; margin-bottom: 15px; }
+        .quiz-header { display: flex; justify-content: space-between; background: #eec213; padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
+        #quiz-box { display: flex; flex-direction: column; gap: 15px; }
+        @media(min-width: 768px) { #quiz-box { flex-direction: row; } .quiz-main { flex: 3; } .quiz-sidebar { flex: 1; min-width: 250px; } }
+        .quiz-main { background: #fafafa; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .question { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #333; }
+        .option { background: white; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; font-size: 16px; }
         .option:hover { background: #f0f0f0; }
         .option input { margin-right: 10px; transform: scale(1.2); }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-        .nav-buttons button, #submit-exam-btn {
-            padding: 10px 20px;
-            font-size: 15px;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background: #003366;
-            color: white;
-        }
-        .quiz-sidebar {
-            background: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .palette {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 5px;
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-            padding: 5px;
-            background: white;
-            border: 1px solid #eee;
-        }
-        .palette-cell {
-            text-align: center;
-            padding: 8px 0;
-            background: #eaeaea;
-            border-radius: 3px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-        }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 15px; }
+        .nav-buttons button, #submit-exam-btn { padding: 10px 20px; font-size: 15px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; background: #003366; color: white; }
+        .quiz-sidebar { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; max-height: 300px; overflow-y: auto; margin-bottom: 15px; padding: 5px; background: white; border: 1px solid #eee; }
+        .palette-cell { text-align: center; padding: 8px 0; background: #eaeaea; border-radius: 3px; cursor: pointer; font-weight: bold; font-size: 12px; }
         .palette-cell.current { background: #003366; color: white; }
         .palette-cell.answered { background: #2e7d32; color: white; }
         #submit-exam-btn { width: 100%; margin-top: 10px; }
@@ -118,11 +29,11 @@
 <body>
 
 <div class="container">
-    <h1>🚔 पोलीस भरती संपूर्ण ऑनलाईन सराव परीक्षा (१०० प्रश्न)</h1>
+    <h1>🚔 पोलीस भरती विशेष ऑनलाईन सराव परीक्षा (५० प्रश्न)</h1>
     
     <div class="quiz-header">
         <div id="category">विषय: लोड होत आहे...</div>
-        <div>⏱️ वेळ: <span id="timer">90:00</span></div>
+        <div>⏱️ वेळ: <span id="timer">45:00</span></div>
     </div>
 
     <div id="quiz-box">
@@ -145,7 +56,22 @@
 
 <script>
 const questions = [
-  // ========== मराठी व्याकरण (१ ते २५) ==========
+  // ========== सामान्य ज्ञान व चालू घडामोडी (१ ते १३) ==========
+  { "category": "सामान्य ज्ञान", "question": "महाराष्ट्र राज्याची स्थापना केव्हा झाली?", "options": ["1 मे 1960", "15 ऑगस्ट 1947", "26 जानेवारी 1950", "1 मे 1950"], "answer": 0 },
+  { "category": "सामान्य ज्ञान", "question": "महाराष्ट्राची उपराजधानी कोणती आहे?", "options": ["पुणे", "औरंगाबाद", "नागपूर", "नाशिक"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "चले जाव चळवळ कोणत्या वर्षापासून सुरू झाली?", "options": ["१९२०", "१९३०", "१९४२", "१९४७"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "भारताचे सध्याचे गृहमंत्री कोण आहेत?", "options": ["राजनाथ सिंह", "अमित शाह", "नितीन गडकरी", "नरेंद्र मोदी"], "answer": 1 },
+  { "category": "सामान्य ज्ञान", "question": "महाराष्ट्रातील सर्वात उंच शिखर कोणते आहे?", "options": ["साल्हेर", "महाबळेश्वर", "कळसूबाई", "सप्तशृंगी"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "लोणार सरोवर महाराष्ट्रातील कोणत्या जिल्ह्यात आहे?", "options": ["बुलढाणा", "अकोला", "जळगाव", "वाशिम"], "answer": 0 },
+  { "category": "सामान्य ज्ञान", "question": "भारतीय राज्यघटनेचे जनक कोणाला म्हटले जाते?", "options": ["महात्मा गांधी", "डॉ. बाबासाहेब आंबेडकर", "पंडित नेहरू", "डॉ. राजेंद्र प्रसाद"], "answer": 1 },
+  { "category": "सामान्य ज्ञान", "question": "आरबीआय (RBI) चे मुख्यालय कोठे आहे?", "options": ["दिल्ली", "मुंबई", "कोलकाता", "चेन्नई"], "answer": 1 },
+  { "category": "सामान्य ज्ञान", "question": "महाराष्ट्राचे सध्याचे मुख्यमंत्री कोण आहेत?", "options": ["उद्धव ठाकरे", "देवेंद्र फडणवीस", "एकनाथ शिंदे", "शरद पवार"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "कोणत्या वायूला 'हसवणारा वायू' (Laughing Gas) म्हणतात?", "options": ["नायट्रस ऑक्साईड", "कार्बन डायॉक्साईड", "हायड्रोजन", "ऑक्सिजन"], "answer": 0 },
+  { "category": "सामान्य ज्ञान", "question": "गोदावरी नदीचा उगम महाराष्ट्रात कोठे होतो?", "options": ["महाबळेश्वर", "भीमाशंकर", "त्र्यंबकेश्वर", "मुलताई"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "भारताचे राष्ट्रीय पेय कोणते मानले जाते?", "options": ["दूध", "कॉफी", "चहा", "ताक"], "answer": 2 },
+  { "category": "सामान्य ज्ञान", "question": "क्षेत्रफळाच्या दृष्टीने भारतातील सर्वात मोठे राज्य कोणते?", "options": ["महाराष्ट्र", "मध्य प्रदेश", "राजस्थान", "उत्तर प्रदेश"], "answer": 2 },
+
+  // ========== मराठी व्याकरण (१४ २५) ==========
   { "category": "मराठी व्याकरण", "question": "खालीलपैकी 'अमृतानुभव' या ग्रंथाचे लेखक कोण आहेत?", "options": ["संत ज्ञानेश्वर", "संत तुकाराम", "संत एकनाथ", "संत नामदेव"], "answer": 0 },
   { "category": "मराठी व्याकरण", "question": "मराठी भाषेत एकूण किती वर्ण आहेत (आधुनिक वर्णमालेनुसार)?", "options": ["34", "48", "52", "50"], "answer": 2 },
   { "category": "मराठी व्याकरण", "question": "‘घोडा’ या शब्दाचे अनेकवचन खालीलपैकी कोणते होईल?", "options": ["घोडी", "घोडे", "घोड्या", "घोड्यांनी"], "answer": 1 },
@@ -158,48 +84,22 @@ const questions = [
   { "category": "मराठी व्याकरण", "question": "मराठीत एकूण किती विभक्ती मानल्या जातात?", "options": ["५", "७", "८", "९"], "answer": 2 },
   { "category": "मराठी व्याकरण", "question": "‘उंदराला मांजर साक्ष’ या म्हणीचा योग्य अर्थ काय?", "options": ["एकमेकांना मदत करणे", "वाईट कृत्यात एकमेकांना साथ देणे", "मांजराने उंदीर पकडणे", "शत्रूची मदत घेणे"], "answer": 1 },
   { "category": "मराठी व्याकरण", "question": "सूर्योदय या शब्दाचा समास ओळखा.", "options": ["अव्ययीभाव", "तत्पुरुष समास", "द्वंद्व समास", "बहुव्रीही"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "मराठी वर्णमालेत 'क्ष' आणि 'ज्ञ' यांना काय म्हणतात?", "options": ["स्वर", "स्वरादी", "विशेष संयुक्त व्यंजने", "महाप्राण"], "answer": 2 },
-  { "category": "मराठी व्याकरण", "question": "खालीलपैकी कोणता शब्द शुद्ध आहे?", "options": ["आशिर्वाद", "आशीर्वाद", "अशिरवाद", "आशिरवाद्"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "'ती सुंदर मुलगी आहे' या वाक्यातील विशेषण ओळखा.", "options": ["ती", "सुंदर", "मुलगी", "आहे"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "'समुद्र' या शब्दाचा समानार्थी शब्द कोणता?", "options": ["सरिता", "रत्नाकर", "निशाकर", "पवन"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "'कृपण' या शब्दाचा विरुद्धार्थी शब्द ओळखा.", "options": ["कंजूष", "उधळ्या", "दारिद्र्य", "शूर"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "ज्या अक्षरात दोन किंवा अधिक व्यंजने प्रथम एकत्र येऊन शेवटी त्यात एक स्वर मिसळतो, त्यास काय म्हणतात?", "options": ["अक्षर", "जोडाक्षर", "स्वर", "व्यंजन"], "answer": 1 },
-  { "category": "मराठी व्याकरण", "question": "'स्वतः' हे कोणत्या प्रकारचे सर्वनाम आहे?", "options": ["पुरुषवाचक", "संबंधी", "आत्मवाचक", "दर्शक"], "answer": 2 },
-  { "category": "मराठी व्याकरण", "question": "खालीलपैकी 'अनुनासिक' वर्ण कोणता?", "options": ["क", "च", "न", "त"], "answer": 2 },
-  { "category": "मराठी व्याकरण", "question": "'गावात बरेच नारद आहेत' या वाक्यातील 'नारद' हे काय आहे?", "options": ["विशेषनाम", "भाववाचक नाम", "सामान्यनाम", "सर्वनाम"], "answer": 2 },
-  { "category": "मराठी व्याकरण", "question": "'गळ्यात पडणे' या वाक्प्रचाराचा अर्थ काय?", "options": ["गळा आवळणे", "जबरदस्तीने गळ्यात हार घालणे", "आळ येणे किंवा गळ घालणे", "खूप प्रेम करणे"], "answer": 2 },
-  { "category": "मराठी व्याकरण", "question": "'घड्याळाने पाच वाजवले' या वाक्याची क्रियापद छटा कोणती?", "options": ["शक्य", "प्रायोजक", "सिद्ध", "भावकर्तुक"], "answer": 3 },
-  { "category": "मराठी व्याकरण", "question": "खालीलपैकी कोणता वर्ण हा 'अर्धस्वर' नाही?", "options": ["य", "र", "ल", "ह"], "answer": 3 },
-  { "category": "मराठी व्याकरण", "question": "'दशमुख' हा शब्द कोणत्या समासाचे उदाहरण आहे?", "options": ["द्विगु समास", "बहुव्रीही समास", "द्वंद्व समास", "तत्पुरुष समास"], "answer": 1 },
 
-  // ========== अंकगणित (२६ ते ५०) ==========
+  // ========== अंकगणित (२६ ते ३७) ==========
   { "category": "अंकगणित", "question": "दोन संख्यांची बेरीज ४५ असून त्यांचे गुणोत्तर २:३ आहे, तर त्या संख्या कोणत्या?", "options": ["१८ आणि २७", "२० आणि २५", "१५ आणि ३०", "१० आणि ३५"], "answer": 0 },
   { "category": "अंकगणित", "question": "एका आयताची लांबी १५ सेमी आणि रुंदी १० सेमी आहे, तर त्याचे क्षेत्रफळ किती चौसेमी असेल?", "options": ["५०", "१५०", "३०", "२५"], "answer": 1 },
   { "category": "अंकगणित", "question": "१ ते ५० मधील एकूण मूळ संख्या (Prime Numbers) किती आहेत?", "options": ["१०", "१२", "१५", "२०"], "answer": 2 },
   { "category": "अंकगणित", "question": "दरसाल दरशेकडा १० टक्के दराने ५००० रुपयांचे ३ वर्षांचे सरळव्याज किती होईल?", "options": ["१००० रुपये", "१५०० रुपये", "२००० रुपये", "५०० रुपये"], "answer": 1 },
   { "category": "अंकगणित", "question": "एक काम १० मजूर ६ दिवसात पूर्ण करतात, तर तेच काम ५ मजूर किती दिवसात पूर्ण करतील?", "options": ["१२ दिवस", "३ दिवस", "८ दिवस", "१० दिवस"], "answer": 0 },
   { "category": "अंकगणित", "question": "०.०५ × ०.२ = किती?", "options": ["०.१", "०.०१", "०.००१", "१.०"], "answer": 1 },
-  { "category": "अंकगणित", "question": "एका वर्गातील १५ विद्यार्थ्यांचे सरासरी वय १५ वर्षे आहे. शिक्षकाचे वय मिळवल्यास सरासरी १६ होते, तर शिक्षकाचे वय किती?", "options": ["३० वर्षे", "३१ वर्षे", "४० वर्षे", "३२ वर्षे"], "answer": 1 },
   { "category": "अंकगणित", "question": "८० चे २५% म्हणजे किती?", "options": ["२०", "२५", "१५", "३०"], "answer": 0 },
   { "category": "अंकगणित", "question": "एका चौरसाची बाजू १२ सेमी असल्यास त्याचे क्षेत्रफळ किती?", "options": ["४८ चौसेमी", "१४४ चौसेमी", "२४ चौसेमी", "१०० चौसेमी"], "answer": 1 },
   { "category": "अंकगणित", "question": "√६२५ + √१९६ = किती?", "options": ["३५", "३९", "४५", "५०"], "answer": 1 },
   { "category": "अंकगणित", "question": "दोन संख्यांचा मसावि ६ आणि लसावि ७२ आहे, त्यांपैकी एक संख्या १८ असल्यास दुसरी संख्या कोणती?", "options": ["२४", "३६", "१२", "४८"], "answer": 0 },
-  { "category": "अंकगणित", "question": "एक सायकलस्वार ताशी १२ किमी वेगाने जातो, तर त्याचा मीटर प्रति सेकंद वेग किती?", "options": ["३.३३ m/s", "५ m/s", "६ m/s", "२.५ m/s"], "answer": 0 },
   { "category": "अंकगणित", "question": "४, ८, १२, १६, २० यांची सरासरी किती?", "options": ["१०", "१२", "१४", "१६"], "answer": 1 },
-  { "category": "अंकगणित", "question": "एका वस्तूची खरेदी किंमत ४०० रुपये असून ती ४८० रुपयांना विकली, तर शेकडा नफा किती झाला?", "options": ["१०%", "१५%", "२०%", "२५%"], "answer": 2 },
   { "category": "अंकगणित", "question": "एक कार ६ तासांत ४८० किमी अंतर कापते, तर तिचा सरासरी ताशी वेग किती?", "options": ["६० किमी", "७० किमी", "८० किमी", "९० किमी"], "answer": 2 },
-  { "category": "अंकगणित", "question": "जर एका संख्येतून तिचे ४०% वजा केले तर ६० उरतात, तर ती संख्या कोणती?", "options": ["१००", "१२०", "१५०", "२००"], "answer": 0 },
-  { "category": "अंकगणित", "question": "(२५ * ४) / ५ + १२ = किती?", "options": ["३२", "२०", "४०", "२५"], "answer": 0 },
-  { "category": "अंकगणित", "question": "०.५ + ०.५५ + ०.५५५ = किती?", "options": ["१.६०५", "१.५५५", "१.५", "२.०"], "answer": 0 },
-  { "category": "अंकगणित", "question": "५० पैसे आणि ५ रुपये यांचे गुणोत्तर काय होईल?", "options": ["१:१०", "१०:१", "१:५", "५:१"], "answer": 0 },
-  { "category": "अंकगणित", "question": "पहिले पाच सम संख्यांची बेरीज किती होईल?", "options": ["२०", "३०", "२५", "३५"], "answer": 1 },
-  { "category": "अंकगणित", "question": "६०० रुपयांच्या वस्तूवर १५% सूट दिली, तर ती वस्तू किती रुपयांना पडेल?", "options": ["५०० रुपये", "५१० रुपये", "५५० रुपये", "४५० रुपये"], "answer": 1 },
-  { "category": "अंकगणित", "question": "३/४ + ५/४ = किती?", "options": ["८/८", "२", "१", "४"], "answer": 1 },
-  { "category": "अंकगणित", "question": "एका परीक्षेत पास होण्यासाठी ३५% गुण हवे आहेत. एका विद्यार्थ्याला ८० गुण मिळाले व तो ६० गुणांनी नापास झाला, तर ती परीक्षा एकूण किती गुणांची होती?", "options": ["३०० गुण", "४०० गुण", "५०० गुण", "३५० गुण"], "answer": 1 },
-  { "category": "अंकगणित", "question": "१० ते ३० मधील विषम संख्यांची संख्या किती?", "options": ["१०", "११", "९", "१२"], "answer": 0 },
-  { "category": "अंकगणित", "question": "५ चा घन किती?", "options": ["२५", "१२५", "७५", "१५०"], "answer": 1 },
 
-  // ========== बुद्धिमत्ता चाचणी (५१ ते ७५) ==========
+  // ========== बुद्धिमत्ता चाचणी (३८ ते ५०) ==========
   { "category": "बुद्धिमत्ता चाचणी", "question": "मालिका पूर्ण करा: २, ४, ८, १६, ?", "options": ["२०", "२४", "३२", "४०"], "answer": 2 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "जसे 'घर' ला 'छत' असते, तसेच 'झाडा'ला काय असते?", "options": ["पाने/फांद्या", "मूळ", "जमीन", "खिडकी"], "answer": 0 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "जर A = १, B = २, C = ३, तर CAT = किती?", "options": ["२०", "२४", "३२", "५०"], "answer": 1 },
@@ -208,38 +108,148 @@ const questions = [
   { "category": "बुद्धिमत्ता चाचणी", "question": "आज सोमवार आहे, तर आजपासून १५ व्या दिवशी कोणता वार असेल?", "options": ["मंगळवार", "सोमवार", "रविवार", "बुधवार"], "answer": 0 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "मालिका पूर्ण करा: AZ, BY, CX, ?", "options": ["DW", "EV", "DU", "DX"], "answer": 0 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "एका रांगेत अमितचा क्रमांक दोन्ही बाजूंकडून ११ वा आहे, तर रांगेत एकूण किती मुले आहेत?", "options": ["२२", "२१", "२०", "२३"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "जर एका सांकेतिक भाषेत WATER हा शब्द YCVGT असा लिहिला, तर FIRE हा शब्द कसा लिहिला जाईल?", "options": ["HKTG", "GJSF", "HLTG", "GKTG"], "answer": 0 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "गोपाळ पूर्वेकडे तोंड करून उभा आहे. तो डावीकडे ९० अंशात वळाला, तर आता त्याचे तोंड कोणत्या देशात असेल?", "options": ["पश्चिम", "उत्तर", "दक्षिण", "ईशान्य"], "answer": 1 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "नातेसंबंध ओळखा: माझ्या वडिलांच्या एकुलत्या एक मुलाचा मुलगा माझा कोण?", "options": ["भाचा", "मुलगा", "भाऊ", "काका"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "१ जानेवारी २०२४ रोजी सोमवार होता, तर ३१ डिसेंबर २०२४ रोजी कोणता वार असेल? (leap year)", "options": ["सोमवार", "मंगळवार", "बुधवार", "रविवार"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "संख्या मालिका पूर्ण करा: ५, १०, २०, ३५, ५५, ?", "options": ["७०", "८०", "७५", "८५"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "गटात न बसणारा शब्द ओळखा: जानेवारी, मार्च, एप्रिल, मे", "options": ["जानेवारी", "मार्च", "एप्रिल", "मे"], "answer": 2 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "जर काल शनिवार होता, तर परवाच्या नंतरचा दिवस कोणता असेल?", "options": ["मंगळवार", "बुधवार", "सोमवार", "गुरुवार"], "answer": 0 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "घड्याळात ५:३० वाजता मिनिट काटा कोणत्या अंकावर असेल?", "options": ["५", "६", "७", "४"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "विसंगत संख्या ओळखा: ९, १६, २५, ३५, ४९", "options": ["९", "२५", "३५", "४९"], "answer": 2 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "एका सांकेतिक भाषेत '3' म्हणजे 'लाल', '4' म्हणजे 'निळा' आणि '34' म्हणजे काय?", "options": ["लाल निळा", "निळा लाल", "हिरवा लाल", "यांपैकी नाही"], "answer": 0 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "जर सिंह = जंगलाचा राजा, तर हत्ती = ?", "options": ["सर्वात बुद्धिमान", "सर्वात मोठा भूचर प्राणी", "पाळीव प्राणी", "जलचर प्राणी"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "मालिका पूर्ण करा: C, F, I, L, ?", "options": ["M", "N", "O", "P"], "answer": 2 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "उत्तर दिशेला तोंड असलेली व्यक्ती ३ वेळा उजवीकडे वळाली, तर आता तिचे तोंड कोणत्या दिशेला असेल?", "options": ["पूर्व", "पश्चिम", "दक्षिण", "उत्तर"], "answer": 1 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "जर एका सांकेतिक लिपीत 123 चा अर्थ ABC असा होतो, तर 654 चा अर्थ काय होईल?", "options": ["FED", "EDF", "FDE", "DEF"], "answer": 0 },
   { "category": "बुद्धिमत्ता चाचणी", "question": "डोळे : पाहणे :: कान : ?", "options": ["ऐकणे", "सुंगणे", "बोलणे", "चालणे"], "answer": 0 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "एक व्यक्ती दक्षिण दिशेला ५ किमी चालली, नंतर डावीकडे वळून ५ किमी चालली, आता ती सुरुवातीच्या ठिकाणापासून कोणत्या दिशेला आहे?", "options": ["आग्नेय", "ईशान्य", "नैऋत्य", "वायव्य"], "answer": 0 },
-  { "category": "बुद्धिमत्ता चाचणी", "question": "गटात न बसणारे अक्षर ओळखा: A, E, I, Z", "options": ["A", "E", "I", "Z"], "answer": 3 },
+  { "category": "बुद्धिमत्ता चाचणी", "question": "पोलीस ध्वजावर खालीलपैकी कोणते चिन्ह असते?", "options": ["कमळ", "पंचकोनी तारा", "सिंह", "अभयमुद्रा असलेला हात व तारा"], "answer": 3 }
+];
 
-  // ========== सामान्य ज्ञान व चालू घडामोडी (७६ ते १००) ==========
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "महाराष्ट्र राज्याची स्थापना केव्हा झाली?", "options": ["1 मे 1960", "15 ऑगस्ट 1947", "26 जानेवारी 1950", "1 मे 1950"], "answer": 0 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "महाराष्ट्राची उपराजधानी कोणती आहे?", "options": ["पुणे", "औरंगाबाद", "नागपूर", "नाशिक"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "चले जाव चळवळ कोणत्या वर्षापासून सुरू झाली?", "options": ["१९२०", "१९३०", "१९४२", "१९४७"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "भारताचे सध्याचे गृहमंत्री कोण आहेत?", "options": ["राजनाथ सिंह", "अमित शाह", "नितीन गडकरी", "नरेंद्र मोदी"], "answer": 1 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "महाराष्ट्रातील सर्वात उंच शिखर कोणते आहे?", "options": ["साल्हेर", "महाबळेश्वर", "कळसूबाई", "सप्तशृंगी"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "लोणार सरोवर महाराष्ट्रातील कोणत्या जिल्ह्यात आहे?", "options": ["बुलढाणा", "अकोला", "जळगाव", "वाशिम"], "answer": 0 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "भारतीय राज्यघटनेचे जनक कोणाला म्हटले जाते?", "options": ["महात्मा गांधी", "डॉ. बाबासाहेब आंबेडकर", "पंडित नेहरू", "डॉ. राजेंद्र प्रसाद"], "answer": 1 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "आरबीआय चे मुख्यालय कोठे आहे?", "options": ["दिल्ली", "मुंबई", "कोलकाता", "चेन्नई"], "answer": 1 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "महाराष्ट्राचे सध्याचे मुख्यमंत्री कोण आहेत?", "options": ["उद्धव ठाकरे", "देवेंद्र फडणवीस", "एकनाथ शिंदे", "शरद पवार"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "कोणत्या वायूला 'हसवणारा वायू' म्हणतात?", "options": ["नायट्रस ऑक्साईड", "कार्बन डायॉक्साईड", "हायड्रोजन", "ऑक्सिजन"], "answer": 0 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "गोदावरी नदीचा उगम महाराष्ट्रात कोठे होतो?", "options": ["महाबळेश्वर", "भीमाशंकर", "त्र्यंबकेश्वर", "मुलताई"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "भारताचे राष्ट्रीय पेय कोणते मानले जाते?", "options": ["दूध", "कॉफी", "चहा", "ताक"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "क्षेत्रफळाच्या दृष्टीने भारतातातील सर्वात मोठे राज्य कोणते?", "options": ["महाराष्ट्र", "मध्य प्रदेश", "राजस्थान", "उत्तर प्रदेश"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "महाराष्ट्रात एकूण किती जिल्हे आहेत?", "options": ["३४", "३५", "३६", "३८"], "answer": 2 },
-  { "category": "सामान्य ज्ञान व चालू घडामोडी", "question": "इस्रो चे मुख्यालय कोठे आहे?", "options": ["श्रीहरिकोटा", "बेंगळुरू", "तिरुवनंतपुरम", "मुंबई"], "answer": 1 },
-  { "category": "
+let currentQuestionIndex = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let timeLeft = 45 * 60; // ४५ मिनिटे वेळ
+let timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("⏰ वेळ संपली! तुमची परीक्षा ऑटोमॅटिक सबमिट होत आहे.");
+            showResults();
+        }
+        timeLeft--;
+    }, 1000);
+}
+
+function loadQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById('category').innerText = `विषय: ${currentQuestion.category} (${currentQuestionIndex + 1}/${questions.length})`;
+    document.getElementById('question').innerText = `प्र. ${currentQuestionIndex + 1}) ${currentQuestion.question}`;
+    
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = '';
+    
+    currentQuestion.options.forEach((option, index) => {
+        const isChecked = userAnswers[currentQuestionIndex] === index ? 'checked' : '';
+        const optionHTML = `
+            <div class="option">
+                <label style="display:block; width:100%; cursor:pointer;">
+                    <input type="radio" name="quiz-option" value="${index}" ${isChecked} onchange="saveAnswer(${index})">
+                    ${option}
+                </label>
+            </div>
+        `;
+        optionsContainer.insertAdjacentHTML('beforeend', optionHTML);
+    });
+    updatePalette();
+}
+
+function saveAnswer(index) {
+    userAnswers[currentQuestionIndex] = index;
+    updatePalette();
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    } else {
+        alert("हा शेवटचा प्रश्न आहे. कृपया तुमची परीक्षा सबमिट करा!");
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+}
+
+function jumpToQuestion(index) {
+    currentQuestionIndex = index;
+    loadQuestion();
+}
+
+function buildPalette() {
+    const paletteContainer = document.getElementById('question-palette');
+    paletteContainer.innerHTML = '';
+    questions.forEach((_, index) => {
+        const cell = document.createElement('div');
+        cell.id = `palette-cell-${index}`;
+        cell.className = 'palette-cell';
+        cell.innerText = index + 1;
+        cell.onclick = () => jumpToQuestion(index);
+        paletteContainer.appendChild(cell);
+    });
+}
+
+function updatePalette() {
+    questions.forEach((_, index) => {
+        const cell = document.getElementById(`palette-cell-${index}`);
+        if (!cell) return;
+        cell.className = 'palette-cell';
+        if (userAnswers[index] !== null) { cell.classList.add('answered'); }
+        if (index === currentQuestionIndex) { cell.classList.add('current'); }
+    });
+}
+
+function showResults() {
+    clearInterval(timerInterval);
+    const container = document.getElementById('quiz-box');
+    let score = 0;
+    questions.forEach((q, index) => {
+        if (userAnswers[index] === q.answer) { score++; }
+    });
+    
+    const percentage = ((score / questions.length) * 100).toFixed(2);
+    let resultHTML = `
+        <div class="quiz-main" style="text-align: center; padding: 20px; width:100%;">
+            <h2 style="color: #2e7d32;">🎯 तुमचा निकाल (Result)</h2>
+            <h1 style="font-size: 50px; color: #003366; margin: 10px 0;">${score} / ${questions.length}</h1>
+            <p style="font-size: 20px; font-weight: bold;">टक्केवारी: ${percentage}%</p>
+            <button onclick="window.location.reload()" style="padding:10px 20px; background:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">🔄 पुन्हा प्रयत्न करा</button>
+            <div style="text-align: left; margin-top: 40px; border-top: 2px dashed #ccc; padding-top: 20px;">
+                <h3>🔍 उत्तरतालिका विश्लेषण (Answer Key):</h3>
+    `;
+    
+    questions.forEach((q, index) => {
+        const userAns = userAnswers[index];
+        const isCorrect = userAns === q.answer;
+        const bgColor = isCorrect ? '#e8f5e9' : '#ffebee';
+        const borderColor = isCorrect ? '#2e7d32' : '#c62828';
+        resultHTML += `
+            <div style="background: ${bgColor}; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 5px solid ${borderColor};">
+                <div style="font-weight: bold;">प्र. ${index + 1}) ${q.question}</div>
+                <div style="color: #2e7d32; margin-top: 5px;">✅ अचूक उत्तर: ${q.options[q.answer]}</div>
+                ${!isCorrect ? `<div style="color: #c62828; margin-top: 3px;">❌ तुमचे उत्तर: ${userAns !== null ? q.options[userAns] : 'दिले नाही'}</div>` : ''}
+            </div>
+        `;
+    });
+    resultHTML += `</div></div>`;
+    container.innerHTML = resultHTML;
+}
+
+window.onload = function() {
+    buildPalette();
+    startTimer();
+    loadQuestion();
+};
+</script>
+</body>
+</html>
+
