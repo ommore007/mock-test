@@ -8,7 +8,7 @@ const questions = [
   { "category": "मराठी व्याकरण", "question": "‘पाय घसरला आणि पडलो’ हे कोणत्या प्रकारचे वाक्य आहे?", "options": ["केवल वाक्य", "मिश्र वाक्य", "संयुक्त वाक्य", "प्रश्नार्थक वाक्य"], "answer": 2 },
 
   /* अंकगणित */
-  { "category": "अंकगणित", "question": "दोन संख्यांची बेरीज ४५ असून त्यांचे गुणोत्तर २:३ आहे, तर त्या संख्या कोणत्या?", "options": ["१८ आणि २十七章", "२० आणि २५", "१५ आणि ३०", "१० आणि ३५"], "answer": 0 },
+  { "category": "अंकगणित", "question": "दोन संख्यांची बेरीज ४५ असून त्यांचे गुणोत्तर २:३ आहे, तर त्या संख्या कोणत्या?", "options": ["१८ आणि २७", "२० आणि २५", "१५ आणि ३०", "१० आणि ३५"], "answer": 0 },
   { "category": "अंकगणित", "question": "एका आयताची लांबी १५ सेमी आणि रुंदी १० सेमी आहे, तर त्याचे क्षेत्रफळ किती चौसेमी असेल?", "options": ["५०", "१५०", "३०", "२५"], "answer": 1 },
   { "category": "अंकगणित", "question": "१ ते ५० मधील एकूण मूळ संख्या (Prime Numbers) किती आहेत?", "options": ["१०", "१२", "१५", "२०"], "answer": 2 },
 
@@ -24,8 +24,8 @@ const questions = [
 
 // ================= व्हेरिएबल्स (VARIABLES) =================
 let currentQuestionIndex = 0;
-let userAnswers = new Array(questions.length).fill(null); // युझरची उत्तरे सेव्ह करण्यासाठी
-let timeLeft = 90 * 60; // ९० मिनिटे (सेकंदात)
+let userAnswers = new Array(questions.length).fill(null);
+let timeLeft = 90 * 60;
 let timerInterval;
 
 // ================= टाईमर लॉजिक (TIMER) =================
@@ -52,16 +52,13 @@ function startTimer() {
 function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     
-    // हेडलाईन अपडेट करा
     document.getElementById('category').innerText = `विषय: ${currentQuestion.category} (${currentQuestionIndex + 1}/${questions.length})`;
     document.getElementById('question').innerText = `प्र. ${currentQuestionIndex + 1}) ${currentQuestion.question}`;
     
-    // ऑप्शन्स दाखवा
     const optionsContainer = document.getElementById('options');
     optionsContainer.innerHTML = '';
     
     currentQuestion.options.forEach((option, index) => {
-        // जर युझरने आधीच या प्रश्नाचे उत्तर दिले असेल तर ते 'चेक' दाखवा
         const isChecked = userAnswers[currentQuestionIndex] === index ? 'checked' : '';
         
         const optionHTML = `
@@ -126,15 +123,12 @@ function updatePalette() {
         const cell = document.getElementById(`palette-cell-${index}`);
         if (!cell) return;
         
-        // क्लासेस रीसेट करा
         cell.className = 'palette-cell';
         
-        // जर उत्तर दिले असेल तर हिरवा करा
         if (userAnswers[index] !== null) {
             cell.classList.add('answered');
         }
         
-        // जर सध्याचा प्रश्न असेल तर बॉर्डर द्या
         if (index === currentQuestionIndex) {
             cell.classList.add('current');
         }
@@ -164,12 +158,11 @@ function showResults() {
             
             <div style="text-align: left; margin-top: 40px; border-top: 2px dashed #ccc; padding-top: 20px;">
                 <h3>🔍 उत्तरतालिकेचे विश्लेषण (Answer Review):</h3>
-    `;
+        `;
     
     questions.forEach((q, index) => {
         const userAns = userAnswers[index];
         const isCorrect = userAns === q.answer;
-        const itemClass = isCorrect ? 'correct' : 'wrong';
         const bgColor = isCorrect ? '#e8f5e9' : '#ffebee';
         const borderColor = isCorrect ? '#2e7d32' : '#c62828';
         
@@ -192,4 +185,3 @@ window.onload = function() {
     startTimer();
     loadQuestion();
 };
-                       
