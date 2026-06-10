@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>विवेकानंद अकॅडमी | Mock Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
+        .quiz-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .timer { font-size: 1.2rem; color: #dc3545; font-weight: bold; margin-bottom: 20px; text-align: right; }
+        .btn-option { display: block; width: 100%; margin: 10px 0; padding: 12px; border: 2px solid #e1e1e1; border-radius: 10px; transition: 0.3s; }
+        .btn-option:hover { background: #0d6efd; color: white; border-color: #0d6efd; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container" id="quiz">
+    <div class="timer" id="timer">वेळ: 20s</div>
+    <h4 id="q-text">प्रश्न लोड होत आहे...</h4>
+    <div id="options" class="mt-4"></div>
+</div>
+
+<div class="quiz-container" id="result" style="display:none;">
+    <h2>निकाल: <span id="score"></span></h2>
+    <div id="review"></div>
+    <button class="btn btn-primary w-100 mt-3" onclick="location.reload()">पुन्हा सराव करा</button>
+</div>
+
+<script>
+    const questions = [
+        { q: "महाराष्ट्राचे राज्य प्राणी कोणते?", a: ["शेकरू", "वाघ", "सिंह", "हरिण"], c: 0 },
+        { q: "भारताचे 'मिसाईल मॅन' कोणाला म्हणतात?", a: ["ए.पी.जे. अब्दुल कलाम", "होमी भाभा", "विक्रम साराभाई", "सी.व्ही. रामन"], c: 0 },
+        { q: "१ किमी म्हणजे किती मीटर?", a: ["१००० मीटर", "१०० मीटर", "५०० मीटर", "२००० मीटर"], c: 0 }
+    ];
+
+    let currentQ = 0, score = 0, timeLeft = 20, timer, history = [];
+
+    function startTimer() {
+        timeLeft = 20;
+        document.getElementById('timer').innerText = "वेळ: " + timeLeft + "s";
+        timer = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').innerText = "वेळ: " + timeLeft + "s";
+            if(timeLeft <= 0) { clearInterval(timer); handleAnswer(-1); }
+        }, 1000);
+    }
+
+    function handleAnswer(idx) {
+        clearInterval(timer);
+        let correct = questions[currentQ].c;
+        let isCorrect = (idx === correct);
+        if(isCorrect) score++;
+        
+        history.push({ q: questions[currentQ].q, correct: questions[currentQ].a[correct], user: idx === -1 ? "वेळ संपली" : questions[currentQ].a[idx] });
+        
+        currentQ++;
+        if(currentQ < questions.length) showQ();
+        else showResult();
+    }
+
+    function showQ() {
+        startTimer();
+        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + questions[currentQ].q;
+        let optDiv = document.getElementById('options');
+        optDiv.innerHTML = '';
+        questions[currentQ].a.forEach((opt, i) => {
+            let btn = document.createElement('button');
+            btn.className = 'btn btn-option';
+            btn.innerText = opt;
+            btn.onclick = () => handleAnswer(i);
+            optDiv.appendChild(btn);
+        });
+    }
+
+    function showResult() {
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('score').innerText = score + "/" + questions.length;
+        
+        let reviewHtml = history.map((item, i) => `
+            <div class="alert ${item.correct === item.user ? 'alert-success' : 'alert-danger'}">
+                प्रश्न ${i+1}: ${item.q}<br>
+                तुमचे उत्तर: ${item.user} <br> <b>योग्य उत्तर: ${item.correct}</b>
+            </div>
+        `).join('');
+        document.getElementById('review').innerHTML = reviewHtml;
+    }
+
+    showQ();
+</script>
+</body>
+</html>
+
