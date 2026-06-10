@@ -2,22 +2,23 @@
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <title>विवेकानंद अकॅडमी - तलाठी भरती सराव</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>तलाठी भरती सराव</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .box { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
-        .q { font-size: 20px; margin-bottom: 15px; font-weight: bold; }
-        button { display: block; width: 100%; padding: 10px; margin: 5px 0; cursor: pointer; border: 1px solid #ddd; border-radius: 5px; }
-        button:hover { background-color: #e0e0e0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; padding: 20px; display: flex; justify-content: center; }
+        .box { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .q-text { font-size: 1.3rem; margin-bottom: 25px; font-weight: bold; color: #60a5fa; }
+        button { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #334155; color: white; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #6366f1; }
+        .score-box { text-align: center; padding: 40px; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2 style="text-align:center; color:#27ae60;">विवेकानंद अकॅडमी</h2>
-    <h3 style="text-align:center;">तलाठी भरती सराव प्रश्नसंच</h3>
-    <hr>
-    <div id="q-text" class="q">प्रश्न लोड होत आहे...</div>
+    <h3 style="text-align:center; color: #e2e8f0;">तलाठी भरती सराव प्रश्नसंच</h3>
+    <hr style="border: 0; border-top: 1px solid #475569; margin-bottom: 20px;">
+    <div id="q-text" class="q-text">प्रश्न लोड होत आहे...</div>
     <div id="options"></div>
 </div>
 
@@ -38,7 +39,7 @@
         { q: "महाराष्ट्राचे राज्य प्राणी कोणते?", a: ["शेकरू", "वाघ", "सिंह", "हरिण"], c: 0 },
         { q: "अंकगणित: एका संख्येच्या दुप्पटीतून ५ वजा केल्यास १५ उरतात, तर ती संख्या कोणती?", a: ["१०", "८", "१२", "१५"], c: 0 },
         { q: "जिल्हा परिषदेचा प्रशासकीय प्रमुख कोण असतो?", a: ["मुख्य कार्यकारी अधिकारी (CEO)", "जिल्हाधिकारी", "अध्यक्ष", "तहसीलदार"], c: 0 },
-        { q: "मराठी भाषेत एकूण किती स्वर आहेत?", a: ["१४", "१२", "१६", "१०"], c: 0 },
+        { q: "मराठी भाषेत एकूण किती स्वर आहेत?", a: ["१४", "१२", "१६", "१०"], c: 1 },
         { q: "सात-बारा मध्ये 'अ' अधिकार अभिलेख कशाशी संबंधित आहे?", a: ["जमीन मालकी हक्क", "पीक माहिती", "पाणीपट्टी", "काही नाही"], c: 0 },
         { q: "बुद्धिमत्ता: ५, ९, १३, १७, ?", a: ["२१", "१९", "२३", "२५"], c: 0 },
         { q: "भारताचे राष्ट्रीय गीत 'जन गण मन' कोणी लिहिले?", a: ["रवींद्रनाथ टागोर", "बंकिमचंद्र चटर्जी", "गांधीजी", "नेहरू"], c: 0 },
@@ -62,29 +63,32 @@
         { q: "महाराष्ट्रातील सर्वात जुने विद्यापीठ कोणते?", a: ["मुंबई विद्यापीठ", "पुणे विद्यापीठ", "नागपूर विद्यापीठ", "शिवाजी विद्यापीठ"], c: 0 },
         { q: "'प्रवासाची दिशा' मोजण्यासाठी काय वापरतात?", a: ["होकायंत्र", "थर्मामीटर", "बॅरोमीटर", "काही नाही"], c: 0 },
         { q: "मराठी व्याकरण: 'आकाशात पक्षी उडतात' - हे वाक्य कोणत्या काळाचे आहे?", a: ["वर्तमानकाळ", "भूतकाळ", "भविष्यकाळ", "काही नाही"], c: 0 },
-        { q: "राज्यातील महसूल विभागाचे सर्वोच्च पद कोणते?", a: ["महसूल सचिव", "आयुक्त", "जिल्हाधिकारी", "तलाठी"], c: 0 }
+        { q: "राज्यातील महसूल विभागाचे सर्वोच्च पद कोणते?", a: ["महसूल सचिव", "आयुक्त", "जिल्हाधिकारी", "तलाठी"], c: 1 }
     ];
 
     let currentQ = 0;
+    let score = 0;
+
     function showQ() {
-        document.getElementById('q-text').innerText = questions[currentQ].q;
+        if(currentQ >= questions.length) {
+            document.querySelector('.box').innerHTML = `<div class="score-box"><h2>परीक्षा संपली!</h2><p style="font-size: 1.5rem;">तुझा स्कोर: ${score} / ${questions.length}</p><button onclick="location.reload()">पुन्हा परीक्षा द्या</button></div>`;
+            return;
+        }
+        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + questions[currentQ].q;
         let optDiv = document.getElementById('options');
         optDiv.innerHTML = '';
-        questions[currentQ].a.forEach((opt) => {
+        questions[currentQ].a.forEach((opt, index) => {
             let btn = document.createElement('button');
             btn.innerText = opt;
             btn.onclick = () => { 
+                if(index === questions[currentQ].c) score++;
                 currentQ++; 
-                if(currentQ < questions.length) showQ();
-                else {
-                    document.querySelector('.box').innerHTML = '<h2 style="text-align:center;">परीक्षा संपली! अभ्यास चालू ठेवा!</h2>';
-                }
+                showQ();
             };
             optDiv.appendChild(btn);
         });
     }
     showQ();
 </script>
-
 </body>
 </html>
