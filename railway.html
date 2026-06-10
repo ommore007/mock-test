@@ -2,21 +2,45 @@
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <title>रेल्वे सराव</title>
-    </head>
+    <title>रेल्वे भरती सराव</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .q { font-size: 18px; font-weight: bold; margin-bottom: 20px; }
+        .opt { padding: 12px; border: 1px solid #ddd; margin: 8px 0; border-radius: 5px; cursor: pointer; }
+        .opt:hover { background: #e7f3ff; }
+        .nav { margin-top: 20px; display: flex; justify-content: space-between; }
+    </style>
+</head>
 <body>
 <div class="box">
     <h3>🚂 रेल्वे भरती सराव परीक्षा</h3>
     <div id="q-text" class="q">प्रश्न लोड होत आहे...</div>
     <div id="options"></div>
-    <br><a href="index.html">⬅️ होम पेजवर जा</a>
+    <div class="nav">
+        <button onclick="prev()">⬅️ मागे</button>
+        <button onclick="next()">पुढील ➡️</button>
+    </div>
+    <br><a href="index.html">🏠 होम पेजवर जा</a>
 </div>
+
 <script>
     const questions = [
-        { q: "भारतीय रेल्वेचे जनक कोण?", a: ["लॉर्ड डलहौसी", "गांधीजी", "नेहरू", "सावरकर"], c: 0 }
+        { q: "भारतीय रेल्वेचे जनक कोणाला मानतात?", a: ["लॉर्ड डलहौसी", "डॉ. बाबासाहेब आंबेडकर", "गांधीजी", "शिवाजी महाराज"], c: 0 },
+        { q: "भारतातील पहिली रेल्वे कोणत्या मार्गावर धावली?", a: ["मुंबई-पुणे", "मुंबई-ठाणे", "दिल्ली-आग्रा", "चेन्नई-मुंबई"], c: 1 }
     ];
-    // इथे प्रश्न ॲड कर...
+
+    let idx = 0;
+    function load() {
+        let q = questions[idx];
+        document.getElementById("q-text").innerText = q.q;
+        let ops = "";
+        q.a.forEach((o, i) => ops += `<div class="opt" onclick="alert('${i==q.c?'बरोबर!':'चूक!'}')">${o}</div>`);
+        document.getElementById("options").innerHTML = ops;
+    }
+    function next() { if(idx < questions.length - 1) { idx++; load(); } }
+    function prev() { if(idx > 0) { idx--; load(); } }
+    load();
 </script>
 </body>
 </html>
-
