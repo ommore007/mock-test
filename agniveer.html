@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>अग्निवीर सराव</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .q { font-weight: bold; margin-bottom: 20px; }
+        .opt { padding: 12px; border: 1px solid #ddd; margin: 8px 0; cursor: pointer; border-radius: 5px; }
+        .opt:hover { background: #ffebeb; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h3>🔥 अग्निवीर सराव परीक्षा</h3>
+    <div id="q-text" class="q">प्रश्न येथे येईल...</div>
+    <div id="options"></div>
+    <br><a href="index.html">⬅️ होम पेजवर जा</a>
+</div>
+<script>
+    const questions = [
+        { q: "भारतीय सैन्य दलाचे मुख्य मुख्यालय कोठे आहे?", a: ["नवी दिल्ली", "मुंबई", "पुणे", "कोलकाता"], c: 0 },
+        { q: "अग्निवीर भरतीसाठी वयोमर्यादा किती असते?", a: ["17-21", "18-25", "20-28", "18-23"], c: 0 }
+    ];
+    // इथे तुझे प्रश्न ॲड कर...
+    let idx = 0;
+    function load() {
+        let q = questions[idx];
+        document.getElementById("q-text").innerText = q.q;
+        let ops = "";
+        q.a.forEach((o, i) => ops += `<div class="opt" onclick="alert('${i==q.c?'बरोबर!':'चूक!'}')">${o}</div>`);
+        document.getElementById("options").innerHTML = ops;
+    }
+    load();
+</script>
+</body>
+</html>
+
