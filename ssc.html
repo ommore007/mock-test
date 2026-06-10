@@ -1,71 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <title>विवेकानंद अकॅडमी - SSC तयारी</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC भरती सराव प्रश्नसंच</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .box { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
-        .q { font-size: 20px; margin-bottom: 15px; font-weight: bold; }
-        button { display: block; width: 100%; padding: 10px; margin: 5px 0; cursor: pointer; border: 1px solid #ddd; border-radius: 5px; }
-        button:hover { background-color: #e0e0e0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; padding: 20px; display: flex; justify-content: center; }
+        .box { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .q-text { font-size: 1.2rem; margin-bottom: 25px; font-weight: bold; color: #22d3ee; }
+        button { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 8px; background: #334155; color: white; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #0891b2; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2 style="text-align:center; color:#d32f2f;">विवेकानंद अकॅडमी</h2>
-    <h3 style="text-align:center;">SSC सराव प्रश्नसंच</h3>
-    <hr>
-    <div id="q-text" class="q">प्रश्न लोड होत आहे...</div>
+    <h3 style="text-align:center;">SSC भरती सराव (४० प्रश्न)</h3>
+    <hr style="border: 0; border-top: 1px solid #475569; margin-bottom: 20px;">
+    <div id="q-text" class="q-text">प्रश्न लोड होत आहे...</div>
     <div id="options"></div>
 </div>
 
 <script>
-    // 'const' लहान अक्षरात वापरणे महत्त्वाचे आहे
     const questions = [
-        { q: "Which is the capital of India?", a: ["New Delhi", "Mumbai", "Kolkata", "Chennai"], c: 0 },
-        { q: "Who is known as the 'Father of the Indian Constitution'?", a: ["B.R. Ambedkar", "Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel"], c: 0 },
-        { q: "Reasoning: If 2+3=5, 4+5=9, then 6+7=?", a: ["13", "12", "14", "11"], c: 0 },
-        { q: "Which planet is known as the 'Red Planet'?", a: ["Mars", "Venus", "Jupiter", "Saturn"], c: 0 },
-        { q: "English: Choose the synonym of 'Happy'.", a: ["Joyful", "Sad", "Angry", "Tired"], c: 0 },
-        { q: "What is the currency of USA?", a: ["Dollar", "Rupee", "Euro", "Yen"], c: 0 },
-        { q: "Reasoning: Find the odd one out: Apple, Orange, Potato, Mango.", a: ["Potato", "Apple", "Orange", "Mango"], c: 0 },
-        { q: "Which gas do plants absorb from the atmosphere?", a: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Helium"], c: 0 },
-        { q: "Who wrote 'Discovery of India'?", a: ["Jawaharlal Nehru", "Rabindranath Tagore", "Bankim Chandra", "Gandhi"], c: 0 },
-        { q: "English: Antonym of 'Big' is?", a: ["Small", "Huge", "Large", "Giant"], c: 0 },
-        { q: "Which is the longest river in India?", a: ["Ganga", "Yamuna", "Godavari", "Indus"], c: 0 },
-        { q: "Reasoning: If DOG is coded as EPH, what is the code for CAT?", a: ["DBU", "CBU", "EAU", "DBS"], c: 0 },
-        { q: "Who is the current President of India?", a: ["Droupadi Murmu", "Ram Nath Kovind", "Pratibha Patil", "None of these"], c: 0 },
-        { q: "English: 'She ___ to school every day.' (Fill in the blank)", a: ["goes", "go", "going", "gone"], c: 0 },
-        { q: "Which vitamin is found in citrus fruits?", a: ["Vitamin C", "Vitamin A", "Vitamin B", "Vitamin D"], c: 0 },
-        { q: "How many states are there in India?", a: ["28", "29", "27", "30"], c: 0 },
-        { q: "Reasoning: 1, 4, 9, 16, ?", a: ["25", "20", "36", "30"], c: 0 },
-        { q: "Who invented the Telephone?", a: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"], c: 0 },
-        { q: "English: Correct spelling?", a: ["Beautiful", "Beautifull", "Beatiful", "Butiful"], c: 0 },
-        { q: "Which is the smallest state in India by area?", a: ["Goa", "Sikkim", "Kerala", "Tripura"], c: 0 }
+        { q: "भारताचे सध्याचे राष्ट्रपती कोण आहेत?", a: ["द्रौपदी मुर्मू", "रामनाथ कोविंद", "जगदीप धनखड", "यापैकी नाही"], c: 0 },
+        { q: "बुद्धिमत्ता: ५, १०, १७, २६, ३७, ?", a: ["४८", "५०", "५२", "४९"], c: 1 },
+        { q: "अंकगणित: एका वस्तूची किंमत ५०० आहे, ती ४०० ला विकली तर शेकडा तोटा किती?", a: ["१०%", "२०%", "२५%", "१५%"], c: 1 },
+        { q: "इंग्रजी: Antonym of 'Happy'?", a: ["Joyful", "Sad", "Glad", "Cheerful"], c: 1 },
+        { q: "भारताचा सर्वोच्च नागरी पुरस्कार कोणता?", a: ["पद्म विभूषण", "भारतरत्न", "पद्मश्री", "अर्जुन पुरस्कार"], c: 1 },
+        { q: "बुद्धिमत्ता: जर 'CAT' म्हणजे '3120', तर 'DOG' म्हणजे किती?", a: ["4157", "5168", "3146", "4158"], c: 0 },
+        { q: "अंकगणित: २³ + ३² = ?", a: ["१५", "१७", "१८", "१६"], c: 1 },
+        { q: "मराठी व्याकरण: 'तलावाचे पाणी' - यातील 'चे' ही कोणती विभक्ती आहे?", a: ["प्रथमा", "षष्ठी", "पंचमी", "सप्तमी"], c: 1 },
+        { q: "पृथ्वीचा 'जुळा ग्रह' कोणाला म्हणतात?", a: ["मंगळ", "शुक्र", "बुध", "गुरु"], c: 1 },
+        { q: "इंग्रजी: 'I ___ a book now.' (Fill the blank)", a: ["am reading", "read", "reads", "was reading"], c: 0 },
+        { q: "अंकगणित: १० माणसांना एक काम करायला ५ दिवस लागतात, तर तेच काम ५ माणसांना करायला किती दिवस लागतील?", a: ["८", "१०", "१२", "७"], c: 1 },
+        { q: "बुद्धिमत्ता: घड्याळात ३:१५ वाजले असतील तर आरशात किती वेळ दिसेल?", a: ["९:४५", "८:४५", "९:१५", "८:१५"], c: 1 },
+        { q: "भारताचे 'संविधान' कधी स्वीकारले?", a: ["१५ ऑगस्ट १९४७", "२६ नोव्हेंबर १९४९", "२६ जानेवारी १९५०", "१५ ऑगस्ट १९५०"], c: 1 },
+        { q: "विज्ञानाचा प्रश्न: सूर्यप्रकाशात किती रंग असतात?", a: ["५", "६", "७", "८"], c: 2 },
+        { q: "SSC चा फुल फॉर्म काय आहे?", a: ["Staff Selection Commission", "State Service Centre", "Staff Service Centre", "काही नाही"], c: 0 },
+        { q: "इंग्रजी: Synonym of 'Huge'?", a: ["Small", "Tiny", "Enormous", "Little"], c: 2 },
+        { q: "अंकगणित: वर्तुळाचे क्षेत्रफळ काढण्याचे सूत्र?", a: ["2πr", "πr²", "πd", "यापैकी नाही"], c: 1 },
+        { q: "बुद्धिमत्ता: A, C, E, G, ?", a: ["H", "I", "J", "K"], c: 1 },
+        { q: "भारताचे सध्याचे अर्थमंत्री कोण आहेत?", a: ["निर्मला सीतारामन", "पीयूष गोयल", "अमित शाह", "काही नाही"], c: 0 },
+        { q: "इंग्रजी: 'He is ___ honest man.' (Use Article)", a: ["a", "an", "the", "no article"], c: 1 },
+        { q: "बुद्धिमत्ता: २, ३, ५, ७, ११, ?", a: ["१२", "१३", "१४", "१५"], c: 1 },
+        { q: "लोकसभेची मुदत किती वर्षांची असते?", a: ["४", "५", "६", "३"], c: 1 },
+        { q: "अंकगणित: ५०% चे ५०% किती?", a: ["२५%", "५०%", "०.२५%", "१००%"], c: 0 },
+        { q: "इंग्रजी: 'They ___ playing football.'", a: ["is", "are", "am", "was"], c: 1 },
+        { q: "जागतिक आरोग्य संघटनेचे (WHO) मुख्यालय कुठे आहे?", a: ["न्यूयॉर्क", "जिनिव्हा", "पॅरिस", "लंडन"], c: 1 },
+        { q: "बुद्धिमत्ता: जर एका रांगेत 'रोहन' मागून ८ वा आहे, रांगेत एकूण २० मुले आहेत, तर तो पुढून कितवा आहे?", a: ["१२ वा", "१३ वा", "११ वा", "१४ वा"], c: 1 },
+        { q: "क्षेत्रफळाच्या दृष्टीने जगातील सर्वात मोठा देश?", a: ["चीन", "अमेरिका", "रशिया", "भारत"], c: 2 },
+        { q: "इंग्रजी: 'She ___ (go) to school daily.'", a: ["goes", "go", "going", "gone"], c: 0 },
+        { q: "विज्ञानाचा प्रश्न: मानवी शरीरातील सर्वात मोठे हाड कोणते?", a: ["फीमर", "कवटी", "पाठीचा कणा", "यापैकी नाही"], c: 0 },
+        { q: "अंकगणित: ९ चा घन किती?", a: ["७२९", "८१", "६२९", "७१२"], c: 0 },
+        { q: "बुद्धिमत्ता: १, ४, ९, १६, २५, ?", a: ["३०", "३५", "३६", "४०"], c: 2 },
+        { q: "भारताचे 'मिसाईल मॅन' कोण?", a: ["अब्दुल कलाम", "होमी भाभा", "विक्रम साराभाई", "काही नाही"], c: 0 },
+        { q: "इंग्रजी: Past tense of 'Drink'?", a: ["Drank", "Drunk", "Drinks", "Drinking"], c: 0 },
+        { q: "महाराष्ट्राचे पहिले मुख्यमंत्री कोण होते?", a: ["यशवंतराव चव्हाण", "वसंतराव नाईक", "शरद पवार", "काही नाही"], c: 0 },
+        { q: "बुद्धिमत्ता: जर 'X' म्हणजे 'Y', तर 'Y' म्हणजे 'Z', तर 'X' म्हणजे काय?", a: ["Y", "Z", "X", "काही नाही"], c: 1 },
+        { q: "अंकगणित: ३० चा १०% किती?", a: ["३", "३०", "१", "५"], c: 0 },
+        { q: "इंग्रजी: Opposite of 'Light' (Weight)?", a: ["Heavy", "Dark", "Bright", "Soft"], c: 0 },
+        { q: "भारतातील सर्वात लांब नदी कोणती?", a: ["गोदावरी", "गंगा", "यमुना", "सिंधू"], c: 1 },
+        { q: "बुद्धिमत्ता: ५, ५, १०, १५, २५, ?", a: ["३०", "४०", "३५", "५०"], c: 1 },
+        { q: "SSC परीक्षा किती भाषांमध्ये घेतली जाते?", a: ["फक्त इंग्रजी", "फक्त मराठी", "इंग्रजी आणि हिंदी", "अनेक प्रादेशिक भाषा"], c: 3 }
     ];
 
     let currentQ = 0;
+    let score = 0;
+
     function showQ() {
-        document.getElementById('q-text').innerText = questions[currentQ].q;
+        if(currentQ >= questions.length) {
+            document.querySelector('.box').innerHTML = `<div style="text-align:center;"><h2>परीक्षा संपली!</h2><p style="font-size: 1.5rem;">तुझा एकूण स्कोर: ${score} / ${questions.length}</p><button onclick="location.reload()">पुन्हा परीक्षा द्या</button></div>`;
+            return;
+        }
+        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + questions[currentQ].q;
         let optDiv = document.getElementById('options');
         optDiv.innerHTML = '';
-        questions[currentQ].a.forEach((opt) => {
+        questions[currentQ].a.forEach((opt, index) => {
             let btn = document.createElement('button');
             btn.innerText = opt;
             btn.onclick = () => { 
+                if(index === questions[currentQ].c) score++;
                 currentQ++; 
-                if(currentQ < questions.length) showQ();
-                else {
-                    document.querySelector('.box').innerHTML = '<h2 style="text-align:center;">परीक्षा संपली! धन्यवाद!</h2>';
-                }
+                showQ();
             };
             optDiv.appendChild(btn);
         });
     }
     showQ();
 </script>
-
 </body>
 </html>
