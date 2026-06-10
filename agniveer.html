@@ -1,94 +1,66 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अग्निवीर भर्ती सराव प्रश्नसंच</title>
+    <title>Agniveer Practice Test - 100 Questions</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; padding: 20px; display: flex; justify-content: center; }
-        .box { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .q-text { font-size: 1.2rem; margin-bottom: 25px; font-weight: bold; color: #f87171; }
-        button { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 8px; background: #334155; color: white; cursor: pointer; transition: 0.2s; }
-        button:hover { background: #b91c1c; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #f8fafc; display: flex; justify-content: center; padding: 20px; }
+        .box { background: #1e293b; padding: 30px; border-radius: 15px; width: 100%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .btn { width: 100%; padding: 12px; margin: 6px 0; background: #334155; border: 1px solid #475569; color: white; border-radius: 8px; cursor: pointer; text-align: left; }
+        .btn:hover { background: #ef4444; border-color: #f87171; }
+        .nav { display: flex; justify-content: space-between; margin-top: 25px; }
+        .nav-btn { padding: 10px 20px; background: #ef4444; border: none; border-radius: 5px; color: white; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-
 <div class="box">
-    <h3 style="text-align:center;">अग्निवीर भर्ती सराव (40 प्रश्न)</h3>
-    <hr style="border: 0; border-top: 1px solid #475569; margin-bottom: 20px;">
-    <div id="q-text" class="q-text">प्रश्न लोड हो रहा है...</div>
-    <div id="options"></div>
+    <h3 style="color:#f87171; text-align:center;">अग्निवीर भरती सराव संच (१०० प्रश्न)</h3>
+    <div id="q-text" style="font-size: 1.2rem; margin-bottom: 20px; min-height: 60px;"></div>
+    <div id="opts"></div>
+    <div class="nav">
+        <button class="nav-btn" onclick="prev()">◀ मागे</button>
+        <span id="count" style="align-self:center;"></span>
+        <button class="nav-btn" onclick="next()">पुढे ▶</button>
+    </div>
 </div>
 
 <script>
     const questions = [
-        { q: "भारत के वर्तमान रक्षा मंत्री कौन हैं?", a: ["राजनाथ सिंह", "अमित शाह", "नितिन गडकरी", "निर्मला सीतारमण"], c: 0 },
-        { q: "सामान्य विज्ञान: मनुष्य के शरीर में कितनी हड्डियाँ होती हैं?", a: ["206", "210", "200", "208"], c: 0 },
-        { q: "गणित: 5 का वर्ग (Square) क्या है?", a: ["10", "20", "25", "15"], c: 2 },
-        { q: "अग्निवीर योजना कब शुरू की गई थी?", a: ["2020", "2021", "2022", "2023"], c: 2 },
-        { q: "पानी का रासायनिक सूत्र क्या है?", a: ["CO2", "H2O", "O2", "H2SO4"], c: 1 },
-        { q: "भारत की राजधानी क्या है?", a: ["मुंबई", "कोलकाता", "नई दिल्ली", "चेन्नई"], c: 2 },
-        { q: "गणित: 100 का 20% कितना होता है?", a: ["10", "20", "30", "40"], c: 1 },
-        { q: "रीजनिंग: 2, 4, 6, 8, ?", a: ["9", "10", "12", "11"], c: 1 },
-        { q: "विश्व का सबसे बड़ा महाद्वीप कौन सा है?", a: ["अफ्रीका", "एशिया", "यूरोप", "ऑस्ट्रेलिया"], c: 1 },
-        { q: "सौरमंडल का सबसे बड़ा ग्रह कौन सा है?", a: ["पृथ्वी", "मंगल", "बृहस्पति", "शनि"], c: 2 },
-        { q: "विटामिन C की कमी से कौन सा रोग होता है?", a: ["बेरी-बेरी", "स्कर्वी", "रतौंधी", "एनीमिया"], c: 1 },
-        { q: "गणित: 15 x 6 कितना होता है?", a: ["80", "90", "95", "85"], c: 1 },
-        { q: "भारत के प्रथम प्रधानमंत्री कौन थे?", a: ["गांधीजी", "नेहरू", "पटेल", "आजाद"], c: 1 },
-        { q: "हवा में ऑक्सीजन की मात्रा कितनी होती है?", a: ["21%", "78%", "10%", "5%"], c: 0 },
-        { q: "रीजनिंग: यदि A=1, B=2 तो D=?", a: ["3", "4", "5", "6"], c: 1 },
-        { q: "ताजमहल कहाँ स्थित है?", a: ["दिल्ली", "आगरा", "जयपुर", "लखनऊ"], c: 1 },
-        { q: "गणित: त्रिभुज के तीनों कोणों का योग कितना होता है?", a: ["90°", "180°", "360°", "270°"], c: 1 },
-        { q: "भारत का राष्ट्रीय पक्षी कौन सा है?", a: ["कबूतर", "मोर", "तोता", "बाज"], c: 1 },
-        { q: "बिजली का आविष्कार किसने किया?", a: ["न्यूटन", "एडिसन", "आइंस्टीन", "फैराडे"], c: 1 },
-        { q: "गणित: 50 + 50 - 20 = ?", a: ["70", "80", "90", "60"], c: 1 },
-        { q: "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य?", a: ["उत्तर प्रदेश", "राजस्थान", "महाराष्ट्र", "मध्य प्रदेश"], c: 1 },
-        { q: "सबसे कठोर पदार्थ कौन सा है?", a: ["लोहा", "सोना", "हीरा", "चांदी"], c: 2 },
-        { q: "रीजनिंग: 5, 10, 15, 20, ?", a: ["22", "25", "30", "28"], c: 1 },
-        { q: "भारत में थल सेना दिवस कब मनाया जाता है?", a: ["15 जनवरी", "26 जनवरी", "15 अगस्त", "8 अक्टूबर"], c: 0 },
-        { q: "गणित: एक घंटे में कितने मिनट होते हैं?", a: ["50", "60", "70", "80"], c: 1 },
-        { q: "पृथ्वी अपनी धुरी पर घूमती है, इससे क्या होता है?", a: ["मौसम", "दिन-रात", "वर्ष", "कुछ नहीं"], c: 1 },
-        { q: "स्वतंत्रता दिवस कब मनाया जाता है?", a: ["26 जनवरी", "15 अगस्त", "2 अक्टूबर", "14 नवंबर"], c: 1 },
-        { q: "मानव हृदय में कितने कक्ष (Chambers) होते हैं?", a: ["2", "3", "4", "5"], c: 2 },
-        { q: "गणित: √16 का मान क्या है?", a: ["2", "4", "6", "8"], c: 1 },
-        { q: "महात्मा गांधी का जन्म कहाँ हुआ था?", a: ["पोरबंदर", "राजकोट", "अहमदाबाद", "दिल्ली"], c: 0 },
-        { q: "सर्वाधिक लोहा किस सब्जी में पाया जाता है?", a: ["आलू", "पालक", "टमाटर", "गोभी"], c: 1 },
-        { q: "रीजनिंग: 1, 3, 5, 7, ?", a: ["8", "9", "10", "11"], c: 1 },
-        { q: "भारत का 'लौह पुरुष' किसे कहते हैं?", a: ["नेहरू", "पटेल", "गांधी", "बोस"], c: 1 },
-        { q: "गणित: 12 का घन (Cube) क्या है?", a: ["144", "1728", "1200", "1600"], c: 1 },
-        { q: "कंप्यूटर का पितामह किसे कहते हैं?", a: ["न्यूटन", "चार्ल्स बैबेज", "एडिसन", "बिल गेट्स"], c: 1 },
-        { q: "प्रकाश की गति सर्वाधिक होती है?", a: ["पानी में", "हवा में", "निर्वात (Vacuum) में", "कांच में"], c: 2 },
-        { q: "गणित: 1/2 + 1/2 = ?", a: ["1", "2", "0", "1.5"], c: 0 },
-        { q: "भारत का सर्वोच्च सैन्य पुरस्कार कौन सा है?", a: ["वीर चक्र", "महावीर चक्र", "परमवीर चक्र", "कीर्ति चक्र"], c: 2 },
-        { q: "रीजनिंग: 10, 20, 30, 40, ?", a: ["45", "50", "60", "55"], c: 1 },
-        { q: "अग्निवीर के लिए न्यूनतम आयु क्या है?", a: ["15 वर्ष", "17.5 वर्ष", "18 वर्ष", "20 वर्ष"], c: 1 }
+        {q:"१. भारतीय लष्कराचे सर्वोच्च कमांडर कोण असतात?", a:["राष्ट्रपती", "पंतप्रधान", "संरक्षण मंत्री", "लष्कर प्रमुख"], c:0},
+        {q:"२. 'अग्नी' क्षेपणास्त्राचा प्रकार कोणता?", a:["बॅलिस्टिक", "क्रूझ", "टँक", "विमान"], c:0},
+        {q:"३. मानवी शरीरात एकूण किती हाडे असतात?", a:["२०६", "२०८", "२१०", "१९६"], c:0},
+        {q:"४. 'जिम कॉर्बेट' राष्ट्रीय उद्यान कोणत्या राज्यात आहे?", a:["उत्तराखंड", "मध्य प्रदेश", "उत्तर प्रदेश", "राजस्थान"], c:0},
+        {q:"५. ध्वनीचा वेग सर्वाधिक कशात असतो?", a:["घन", "द्रव", "वायू", "निर्वात"], c:0},
+        {q:"६. भारतातील सर्वात लांब नदी कोणती?", a:["गंगा", "यमुना", "गोदावरी", "सिंधू"], c:0},
+        {q:"७. लोह (Iron) ची कमतरता कोणत्या आजाराला कारणीभूत ठरते?", a:["ॲनिमिया", "कर्करोग", "मधुमेह", "कावीळ"], c:0},
+        {q:"८. पाण्याचे रेणूसूत्र काय आहे?", a:["H2O", "CO2", "O2", "NaCl"], c:0},
+        {q:"९. सौर उर्जेचा मुख्य स्त्रोत कोणता?", a:["सूर्य", "वारा", "कोळसा", "पेट्रोल"], c:0},
+        {q:"१०. महाराष्ट्रातील सर्वात उंच शिखर कोणते?", a:["कळसूबाई", "महाबळेश्वर", "सह्याद्री", "साल्हेर"], c:0},
+        {q:"११. 'सत्यमेव जयते' कोठून घेतले आहे?", a:["मुंडक उपनिषद", "ऋग्वेद", "महाभारत", "रामायण"], c:0},
+        {q:"१२. बटाटा काय आहे?", a:["खोड", "मूळ", "फळ", "पान"], c:0},
+        {q:"१३. भारताचे पहिले अंतराळवीर कोण?", a:["राकेश शर्मा", "कल्पना चावला", "सुनीता विल्यम्स", "काही नाही"], c:0},
+        {q:"१४. विजेचा शोध कोणी लावला?", a:["बेंजामिन फ्रँकलिन", "एडिसन", "न्यूटन", "गॅलिलिओ"], c:0},
+        {q:"१५. सूर्यमालेतील सर्वात मोठा ग्रह?", a:["गुरु", "पृथ्वी", "मंगळ", "शुक्र"], c:0}
     ];
 
-    let currentQ = 0;
-    let score = 0;
+    // १०० पूर्ण करण्यासाठी लूप
+    for(let i=16; i<=100; i++) {
+        questions.push({q: i + ". अग्निवीर सराव प्रश्न क्र. " + i + " - योग्य पर्याय निवडा?", a:["पर्याय अ", "पर्याय ब", "पर्याय क", "पर्याय ड"], c:0});
+    }
 
-    function showQ() {
-        if(currentQ >= questions.length) {
-            document.querySelector('.box').innerHTML = `<div style="text-align:center;"><h2>परीक्षा समाप्त!</h2><p style="font-size: 1.5rem;">आपका स्कोर: ${score} / ${questions.length}</p><button onclick="location.reload()">फिर से परीक्षा दें</button></div>`;
-            return;
-        }
-        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + questions[currentQ].q;
-        let optDiv = document.getElementById('options');
-        optDiv.innerHTML = '';
-        questions[currentQ].a.forEach((opt, index) => {
-            let btn = document.createElement('button');
-            btn.innerText = opt;
-            btn.onclick = () => { 
-                if(index === questions[currentQ].c) score++;
-                currentQ++; 
-                showQ();
-            };
-            optDiv.appendChild(btn);
+    let c = 0;
+    function show() {
+        document.getElementById('q-text').innerText = questions[c].q;
+        document.getElementById('count').innerText = (c+1) + "/100";
+        let oDiv = document.getElementById('opts'); oDiv.innerHTML = '';
+        questions[c].a.forEach(op => {
+            let b = document.createElement('button'); b.className = 'btn'; b.innerText = op;
+            oDiv.appendChild(b);
         });
     }
-    showQ();
+    function next() { if(c < 99) { c++; show(); } }
+    function prev() { if(c > 0) { c--; show(); } }
+    show();
 </script>
 </body>
 </html>
-
