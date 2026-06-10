@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>पोलीस भरती सराव</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .q { font-size: 18px; font-weight: bold; margin-bottom: 20px; }
+        .opt { padding: 12px; border: 1px solid #ddd; margin: 8px 0; cursor: pointer; border-radius: 5px; }
+        .opt:hover { background: #e7f3ff; }
+        .nav { margin-top: 20px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h3>🚔 पोलीस भरती सराव परीक्षा</h3>
+    <div id="q-text" class="q">लोड होत आहे...</div>
+    <div id="options"></div>
+    <div class="nav">
+        <button onclick="prev()">⬅️ मागे</button>
+        <button onclick="next()">पुढील ➡️</button>
+    </div>
+    <br><a href="index.html">🏠 होम पेजवर जा</a>
+</div>
+
+<script>
+    const questions = [
+        { q: "महाराष्ट्र राज्याची स्थापना कधी झाली?", a: ["1 मे 1960", "15 ऑगस्ट 1947", "26 जानेवारी 1950", "1 मे 1950"], c: 0 },
+        { q: "महाराष्ट्राचे सध्याचे मुख्यमंत्री कोण?", a: ["उद्धव ठाकरे", "देवेंद्र फडणवीस", "एकनाथ शिंदे", "अजित पवार"], c: 2 }
+        // इथे तुझे बाकी प्रश्न ॲड कर (शेवटच्या प्रश्नाला कॉमा नको)
+    ];
+
+    let idx = 0;
+    function load() {
+        let q = questions[idx];
+        document.getElementById("q-text").innerText = q.q;
+        let ops = "";
+        q.a.forEach((o, i) => ops += `<div class="opt" onclick="alert('${i==q.c?'बरोबर!':'चूक!'}')">${o}</div>`);
+        document.getElementById("options").innerHTML = ops;
+    }
+    function next() { if(idx < questions.length - 1) { idx++; load(); } }
+    function prev() { if(idx > 0) { idx--; load(); } }
+    load();
+</script>
+</body>
+</html>
+
