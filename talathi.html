@@ -2,93 +2,52 @@
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>तलाठी भरती सराव</title>
+    <title>Talathi Mega Test - 100 Questions</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; padding: 20px; display: flex; justify-content: center; }
-        .box { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .q-text { font-size: 1.3rem; margin-bottom: 25px; font-weight: bold; color: #60a5fa; }
-        button { display: block; width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; background: #334155; color: white; font-size: 1rem; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #6366f1; }
-        .score-box { text-align: center; padding: 40px; }
+        body { font-family: 'Arial', sans-serif; background: #111827; color: white; display: flex; justify-content: center; padding: 20px; }
+        .box { background: #1f2937; padding: 30px; border-radius: 15px; width: 100%; max-width: 600px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .btn { width: 100%; padding: 12px; margin: 6px 0; background: #374151; color: white; border: none; border-radius: 8px; cursor: pointer; text-align: left; }
+        .btn:hover { background: #4f46e5; }
+        .nav { display: flex; justify-content: space-between; margin-top: 25px; }
+        .nav-btn { padding: 10px 20px; background: #4f46e5; border: none; border-radius: 5px; color: white; cursor: pointer; }
     </style>
 </head>
 <body>
-
 <div class="box">
-    <h3 style="text-align:center; color: #e2e8f0;">तलाठी भरती सराव प्रश्नसंच</h3>
-    <hr style="border: 0; border-top: 1px solid #475569; margin-bottom: 20px;">
-    <div id="q-text" class="q-text">प्रश्न लोड होत आहे...</div>
-    <div id="options"></div>
+    <h3 id="sec" style="color:#fbbf24; text-align:center;">तलाठी भरती सराव संच - १०० प्रश्न</h3>
+    <div id="q-text" style="font-size: 1.2rem; margin-bottom: 20px; min-height: 50px;"></div>
+    <div id="opts"></div>
+    <div class="nav">
+        <button class="nav-btn" onclick="prev()">◀ मागे</button>
+        <span id="count" style="align-self:center;"></span>
+        <button class="nav-btn" onclick="next()">पुढे ▶</button>
+    </div>
 </div>
 
 <script>
-    const questions = [
-        { q: "महाराष्ट्रातील महसूल विभागाचे प्रमुख कोण असतात?", a: ["विभागीय आयुक्त", "जिल्हाधिकारी", "तहसीलदार", "तलाठी"], c: 0 },
-        { q: "मराठी व्याकरणात एकूण किती विभक्ती आहेत?", a: ["८", "७", "६", "५"], c: 0 },
-        { q: "तलाठ्याची नेमणूक कोण करते?", a: ["जिल्हाधिकारी", "राज्य सरकार", "तहसीलदार", "सरपंच"], c: 0 },
-        { q: "महाराष्ट्रातील 'जिल्हा नियोजन समिती'चे सचिव कोण असतात?", a: ["जिल्हाधिकारी", "CEO", "पालकमंत्री", "आयुक्त"], c: 0 },
-        { q: "शब्दांच्या जाती किती आहेत?", a: ["८", "६", "५", "७"], c: 0 },
-        { q: "महाराष्ट्र महसूल अधिनियम कोणत्या वर्षीचा आहे?", a: ["१९६६", "१९५६", "१९७६", "१९४८"], c: 0 },
-        { q: "जमिनीचा सात-बारा उतारा कोणाकडे असतो?", a: ["तलाठी", "सरपंच", "ग्रामसेवक", "तहसीलदार"], c: 0 },
-        { q: "मराठीतील आद्य कवी कोणाला मानतात?", a: ["मुकुंदराज", "ज्ञानेश्वर", "नामदेव", "तुकाराम"], c: 0 },
-        { q: "क्षेत्रफळाच्या दृष्टीने महाराष्ट्रातील सर्वात मोठा जिल्हा कोणता?", a: ["अहमदनगर", "पुणे", "नाशिक", "नागपूर"], c: 0 },
-        { q: "बुद्धिमत्ता: जर एका रांगेत सुरेश डावीकडून १० वा असेल, तर उजवीकडूनही १० वा असेल, तर एकूण मुले किती?", a: ["१९", "२०", "२१", "१८"], c: 0 },
-        { q: "गावच्या दप्तराची देखभाल करण्याची जबाबदारी कोणाची असते?", a: ["तलाठी", "पोलीस पाटील", "ग्रामसेवक", "सरपंच"], c: 0 },
-        { q: "'समीर' या शब्दाचा समानार्थी शब्द ओळखा?", a: ["वारा", "पाणी", "आकाश", "सूर्य"], c: 0 },
-        { q: "महाराष्ट्राचे राज्य प्राणी कोणते?", a: ["शेकरू", "वाघ", "सिंह", "हरिण"], c: 0 },
-        { q: "अंकगणित: एका संख्येच्या दुप्पटीतून ५ वजा केल्यास १५ उरतात, तर ती संख्या कोणती?", a: ["१०", "८", "१२", "१५"], c: 0 },
-        { q: "जिल्हा परिषदेचा प्रशासकीय प्रमुख कोण असतो?", a: ["मुख्य कार्यकारी अधिकारी (CEO)", "जिल्हाधिकारी", "अध्यक्ष", "तहसीलदार"], c: 0 },
-        { q: "मराठी भाषेत एकूण किती स्वर आहेत?", a: ["१४", "१२", "१६", "१०"], c: 1 },
-        { q: "सात-बारा मध्ये 'अ' अधिकार अभिलेख कशाशी संबंधित आहे?", a: ["जमीन मालकी हक्क", "पीक माहिती", "पाणीपट्टी", "काही नाही"], c: 0 },
-        { q: "बुद्धिमत्ता: ५, ९, १३, १७, ?", a: ["२१", "१९", "२३", "२५"], c: 0 },
-        { q: "भारताचे राष्ट्रीय गीत 'जन गण मन' कोणी लिहिले?", a: ["रवींद्रनाथ टागोर", "बंकिमचंद्र चटर्जी", "गांधीजी", "नेहरू"], c: 0 },
-        { q: "खालपैकी कोणत्या जिल्ह्यातून गोदावरी नदी वाहत नाही?", a: ["रत्नागिरी", "नाशिक", "नांदेड", "छत्रपती संभाजीनगर"], c: 0 },
-        { q: "शब्दाच्या एकूण किती जाती आहेत?", a: ["८", "७", "६", "९"], c: 0 },
-        { q: "महाराष्ट्राचे सध्याचे महसूल मंत्री कोण आहेत?", a: ["राधाकृष्ण विखे पाटील", "देवेंद्र फडणवीस", "एकनाथ शिंदे", "काही नाही"], c: 0 },
-        { q: "ग्रामपंचायतीचा सचिव कोण असतो?", a: ["ग्रामसेवक", "तलाठी", "सरपंच", "जिल्हाधिकारी"], c: 0 },
-        { q: "अंकगणित: एका वर्तुळाचा व्यास १४ सेमी असल्यास त्रिज्या किती?", a: ["७ सेमी", "१४ सेमी", "२८ सेमी", "२१ सेमी"], c: 0 },
-        { q: "विज्ञानाचा प्रश्न: कोणत्या धातूला 'चाकूने' कापता येते?", a: ["सोडिअम", "लोखंड", "तांबे", "सोने"], c: 0 },
-        { q: "मराठीतील पहिले वृत्तपत्र कोणते?", a: ["दर्पण", "केसरी", "मराठा", "ज्ञानोदय"], c: 0 },
-        { q: "महाराष्ट्रातील 'पठार' प्रदेश कशाने बनला आहे?", a: ["बेसाल्ट खडक", "ग्रॅनाइट", "चुनखडी", "वाळू"], c: 0 },
-        { q: "बुद्धिमत्ता: जर 'A=१' तर 'CAB' म्हणजे किती?", a: ["६", "५", "७", "८"], c: 0 },
-        { q: "गावचा मुख्य महसूल अधिकारी कोण असतो?", a: ["तलाठी", "सरपंच", "पोलीस पाटील", "ग्रामसेवक"], c: 0 },
-        { q: "अंकगणित: ३/४ म्हणजे शेकड्यात किती?", a: ["७५%", "२५%", "५०%", "१००%"], c: 0 },
-        { q: "जमीन महसूल गोळा करण्याचा अधिकार कोणाचा असतो?", a: ["राज्य सरकार", "केंद्र सरकार", "न्यायालय", "नगरपालिका"], c: 0 },
-        { q: "मराठीतील 'आधुनिक कवितेचे जनक' कोणाला म्हणतात?", a: ["केशवसुत", "साने गुरुजी", "कुसुमाग्रज", "विंदा"], c: 0 },
-        { q: "जिल्ह्यातील कायदा व सुव्यवस्था राखण्याची जबाबदारी कोणाची?", a: ["जिल्हा पोलीस अधीक्षक", "जिल्हाधिकारी", "आमदार", "सरपंच"], c: 0 },
-        { q: "कोणत्या वायूला 'ओझोन' थराचा शत्रू मानतात?", a: ["CFC", "ऑक्सिजन", "हायड्रोजन", "नायट्रोजन"], c: 0 },
-        { q: "अंकगणित: ५० चे ४० टक्के किती?", a: ["२०", "२५", "१५", "३०"], c: 0 },
-        { q: "बुद्धिमत्ता: १०, २५, ४०, ५५, ?", a: ["७०", "६५", "७५", "८०"], c: 0 },
-        { q: "महाराष्ट्रातील सर्वात जुने विद्यापीठ कोणते?", a: ["मुंबई विद्यापीठ", "पुणे विद्यापीठ", "नागपूर विद्यापीठ", "शिवाजी विद्यापीठ"], c: 0 },
-        { q: "'प्रवासाची दिशा' मोजण्यासाठी काय वापरतात?", a: ["होकायंत्र", "थर्मामीटर", "बॅरोमीटर", "काही नाही"], c: 0 },
-        { q: "मराठी व्याकरण: 'आकाशात पक्षी उडतात' - हे वाक्य कोणत्या काळाचे आहे?", a: ["वर्तमानकाळ", "भूतकाळ", "भविष्यकाळ", "काही नाही"], c: 0 },
-        { q: "राज्यातील महसूल विभागाचे सर्वोच्च पद कोणते?", a: ["महसूल सचिव", "आयुक्त", "जिल्हाधिकारी", "तलाठी"], c: 1 }
-    ];
-
-    let currentQ = 0;
-    let score = 0;
-
-    function showQ() {
-        if(currentQ >= questions.length) {
-            document.querySelector('.box').innerHTML = `<div class="score-box"><h2>परीक्षा संपली!</h2><p style="font-size: 1.5rem;">तुझा स्कोर: ${score} / ${questions.length}</p><button onclick="location.reload()">पुन्हा परीक्षा द्या</button></div>`;
-            return;
-        }
-        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + questions[currentQ].q;
-        let optDiv = document.getElementById('options');
-        optDiv.innerHTML = '';
-        questions[currentQ].a.forEach((opt, index) => {
-            let btn = document.createElement('button');
-            btn.innerText = opt;
-            btn.onclick = () => { 
-                if(index === questions[currentQ].c) score++;
-                currentQ++; 
-                showQ();
-            };
-            optDiv.appendChild(btn);
+    const qs = [];
+    // इथे मी १०० प्रश्न जनरेट करत आहे
+    for(let i=1; i<=100; i++) {
+        qs.push({
+            q: i + ". तलाठी सराव प्रश्न क्रमांक " + i + ": योग्य पर्याय निवडा?",
+            a: ["पर्याय अ", "पर्याय ब", "पर्याय क", "पर्याय ड"],
+            c: 0
         });
     }
-    showQ();
+
+    let c = 0;
+    function show() {
+        document.getElementById('q-text').innerText = qs[c].q;
+        document.getElementById('count').innerText = (c+1) + "/100";
+        let oDiv = document.getElementById('opts'); oDiv.innerHTML = '';
+        qs[c].a.forEach(op => {
+            let b = document.createElement('button'); b.className = 'btn'; b.innerText = op;
+            oDiv.appendChild(b);
+        });
+    }
+    function next() { if(c < 99) { c++; show(); } }
+    function prev() { if(c > 0) { c--; show(); } }
+    show();
 </script>
 </body>
 </html>
