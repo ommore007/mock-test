@@ -1,42 +1,71 @@
-const questions = [
-    { q: "Which is the capital of India?", a: ["New Delhi", "Mumbai", "Kolkata", "Chennai"], c: 0 },
-    { q: "Who is known as the 'Father of the Indian Constitution'?", a: ["B.R. Ambedkar", "Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel"], c: 0 },
-    { q: "Reasoning: If 2+3=5, 4+5=9, then 6+7=?", a: ["13", "12", "14", "11"], c: 0 },
-    { q: "Which planet is known as the 'Red Planet'?", a: ["Mars", "Venus", "Jupiter", "Saturn"], c: 0 },
-    { q: "English: Choose the synonym of 'Happy'.", a: ["Joyful", "Sad", "Angry", "Tired"], c: 0 },
-    { q: "What is the currency of USA?", a: ["Dollar", "Rupee", "Euro", "Yen"], c: 0 },
-    { q: "Reasoning: Find the odd one out: Apple, Orange, Potato, Mango.", a: ["Potato", "Apple", "Orange", "Mango"], c: 0 },
-    { q: "Which gas do plants absorb from the atmosphere?", a: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Helium"], c: 0 },
-    { q: "Who wrote 'Discovery of India'?", a: ["Jawaharlal Nehru", "Rabindranath Tagore", "Bankim Chandra", "Gandhi"], c: 0 },
-    { q: "English: Antonym of 'Big' is?", a: ["Small", "Huge", "Large", "Giant"], c: 0 },
-    { q: "Which is the longest river in India?", a: ["Ganga", "Yamuna", "Godavari", "Indus"], c: 0 },
-    { q: "Reasoning: If DOG is coded as EPH, what is the code for CAT?", a: ["DBU", "CBU", "EAU", "DBS"], c: 0 },
-    { q: "Who is the current President of India?", a: ["Droupadi Murmu", "Ram Nath Kovind", "Pratibha Patil", "None of these"], c: 0 },
-    { q: "English: 'She ___ to school every day.'", a: ["goes", "go", "going", "gone"], c: 0 },
-    { q: "Which vitamin is found in citrus fruits?", a: ["Vitamin C", "Vitamin A", "Vitamin B", "Vitamin D"], c: 0 },
-    { q: "How many states are there in India?", a: ["28", "29", "27", "30"], c: 0 },
-    { q: "Reasoning: 1, 4, 9, 16, ?", a: ["25", "20", "36", "30"], c: 0 },
-    { q: "Who invented the Telephone?", a: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"], c: 0 },
-    { q: "English: Correct spelling?", a: ["Beautiful", "Beautifull", "Beatiful", "Butiful"], c: 0 },
-    { q: "Which is the smallest state in India by area?", a: ["Goa", "Sikkim", "Kerala", "Tripura"], c: 0 },
-    { q: "Who is known as the Iron Man of India?", a: ["Sardar Patel", "Subhash Chandra Bose", "Bhagat Singh", "Lal Bahadur Shastri"], c: 0 },
-    { q: "Reasoning: 2, 6, 12, 20, 30, ?", a: ["42", "40", "36", "38"], c: 0 },
-    { q: "Which organ in the human body purifies blood?", a: ["Kidney", "Heart", "Lungs", "Liver"], c: 0 },
-    { q: "English: Choose the correct preposition: 'He jumped ___ the river.'", a: ["into", "in", "to", "at"], c: 0 },
-    { q: "Who was the first woman Prime Minister of India?", a: ["Indira Gandhi", "Sarojini Naidu", "Pratibha Patil", "Sushma Swaraj"], c: 0 },
-    { q: "Reasoning: If today is Monday, what day will be after 7 days?", a: ["Monday", "Tuesday", "Sunday", "Wednesday"], c: 0 },
-    { q: "Which metal is liquid at room temperature?", a: ["Mercury", "Gold", "Silver", "Iron"], c: 0 },
-    { q: "English: 'An apple a day ___ the doctor away.'", a: ["keeps", "keep", "kept", "keeping"], c: 0 },
-    { q: "Who is known as the 'Missile Man of India'?", a: ["A.P.J. Abdul Kalam", "Vikram Sarabhai", "Homi Bhabha", "C.V. Raman"], c: 0 },
-    { q: "Reasoning: Which number comes next? 100, 90, 80, 70, ?", a: ["60", "50", "75", "65"], c: 0 },
-    { q: "Which planet is closest to the Sun?", a: ["Mercury", "Venus", "Earth", "Mars"], c: 0 },
-    { q: "English: Antonym of 'Hard' is?", a: ["Soft", "Easy", "Rough", "Difficult"], c: 0 },
-    { q: "How many players are there in a Cricket team?", a: ["11", "9", "12", "10"], c: 0 },
-    { q: "Who painted the Mona Lisa?", a: ["Leonardo da Vinci", "Picasso", "Van Gogh", "Michelangelo"], c: 0 },
-    { q: "Reasoning: B, D, F, H, ?", a: ["J", "I", "G", "K"], c: 0 },
-    { q: "Which is the national bird of India?", a: ["Peacock", "Parrot", "Eagle", "Sparrow"], c: 0 },
-    { q: "English: 'I ___ my breakfast.'", a: ["ate", "eat", "eats", "eating"], c: 0 },
-    { q: "The Gateway of India is located in?", a: ["Mumbai", "Delhi", "Pune", "Kolkata"], c: 0 },
-    { q: "Reasoning: 5, 10, 15, 20, ?", a: ["25", "30", "22", "35"], c: 0 },
-    { q: "Which gas is essential for human respiration?", a: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"], c: 0 }
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>विवेकानंद अकॅडमी - SSC तयारी</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .box { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
+        .q { font-size: 20px; margin-bottom: 15px; font-weight: bold; }
+        button { display: block; width: 100%; padding: 10px; margin: 5px 0; cursor: pointer; border: 1px solid #ddd; border-radius: 5px; }
+        button:hover { background-color: #e0e0e0; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2 style="text-align:center; color:#d32f2f;">विवेकानंद अकॅडमी</h2>
+    <h3 style="text-align:center;">SSC सराव प्रश्नसंच</h3>
+    <hr>
+    <div id="q-text" class="q">प्रश्न लोड होत आहे...</div>
+    <div id="options"></div>
+</div>
+
+<script>
+    // 'const' लहान अक्षरात वापरणे महत्त्वाचे आहे
+    const questions = [
+        { q: "Which is the capital of India?", a: ["New Delhi", "Mumbai", "Kolkata", "Chennai"], c: 0 },
+        { q: "Who is known as the 'Father of the Indian Constitution'?", a: ["B.R. Ambedkar", "Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel"], c: 0 },
+        { q: "Reasoning: If 2+3=5, 4+5=9, then 6+7=?", a: ["13", "12", "14", "11"], c: 0 },
+        { q: "Which planet is known as the 'Red Planet'?", a: ["Mars", "Venus", "Jupiter", "Saturn"], c: 0 },
+        { q: "English: Choose the synonym of 'Happy'.", a: ["Joyful", "Sad", "Angry", "Tired"], c: 0 },
+        { q: "What is the currency of USA?", a: ["Dollar", "Rupee", "Euro", "Yen"], c: 0 },
+        { q: "Reasoning: Find the odd one out: Apple, Orange, Potato, Mango.", a: ["Potato", "Apple", "Orange", "Mango"], c: 0 },
+        { q: "Which gas do plants absorb from the atmosphere?", a: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Helium"], c: 0 },
+        { q: "Who wrote 'Discovery of India'?", a: ["Jawaharlal Nehru", "Rabindranath Tagore", "Bankim Chandra", "Gandhi"], c: 0 },
+        { q: "English: Antonym of 'Big' is?", a: ["Small", "Huge", "Large", "Giant"], c: 0 },
+        { q: "Which is the longest river in India?", a: ["Ganga", "Yamuna", "Godavari", "Indus"], c: 0 },
+        { q: "Reasoning: If DOG is coded as EPH, what is the code for CAT?", a: ["DBU", "CBU", "EAU", "DBS"], c: 0 },
+        { q: "Who is the current President of India?", a: ["Droupadi Murmu", "Ram Nath Kovind", "Pratibha Patil", "None of these"], c: 0 },
+        { q: "English: 'She ___ to school every day.' (Fill in the blank)", a: ["goes", "go", "going", "gone"], c: 0 },
+        { q: "Which vitamin is found in citrus fruits?", a: ["Vitamin C", "Vitamin A", "Vitamin B", "Vitamin D"], c: 0 },
+        { q: "How many states are there in India?", a: ["28", "29", "27", "30"], c: 0 },
+        { q: "Reasoning: 1, 4, 9, 16, ?", a: ["25", "20", "36", "30"], c: 0 },
+        { q: "Who invented the Telephone?", a: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"], c: 0 },
+        { q: "English: Correct spelling?", a: ["Beautiful", "Beautifull", "Beatiful", "Butiful"], c: 0 },
+        { q: "Which is the smallest state in India by area?", a: ["Goa", "Sikkim", "Kerala", "Tripura"], c: 0 }
+    ];
+
+    let currentQ = 0;
+    function showQ() {
+        document.getElementById('q-text').innerText = questions[currentQ].q;
+        let optDiv = document.getElementById('options');
+        optDiv.innerHTML = '';
+        questions[currentQ].a.forEach((opt) => {
+            let btn = document.createElement('button');
+            btn.innerText = opt;
+            btn.onclick = () => { 
+                currentQ++; 
+                if(currentQ < questions.length) showQ();
+                else {
+                    document.querySelector('.box').innerHTML = '<h2 style="text-align:center;">परीक्षा संपली! धन्यवाद!</h2>';
+                }
+            };
+            optDiv.appendChild(btn);
+        });
+    }
+    showQ();
+</script>
+
+</body>
+</html>
